@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import Footer from "components/Footer/Footer";
-
 import routes from "routes.js";
 
 class LoginLayout extends Component {

@@ -770,3 +770,15 @@
   width: 100%;
   background: rgba(203, 203, 210, 0.15);
 }
+
+.login-panel > .content {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.login-panel > .content > .btn{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

@@ -13,16 +13,11 @@ class LoginView extends Component {
   
   constructor(props){
     super(props);
-    this.state = {
-      username: "",
-      password: ""
-    }
     this.handleSignInClick = this.handleSignInClick.bind(this);
   }
   
   handleSignInClick() {
-    const { history: { push } } = this.props;
-    debugger
+    const { history: { push } } = this.props;    
     push('/dashboard')
   }
   

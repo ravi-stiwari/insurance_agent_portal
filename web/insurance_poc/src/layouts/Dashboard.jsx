@@ -1,22 +1,15 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import NotificationSystem from "react-notification-system";
-
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar";
-
-import { style } from "variables/Variables.jsx";
-
 import routes from "routes.js";
-
 import image from "assets/img/sidebar-bg.jpg";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      _notificationSystem: null,
       image: image,
       color: "black",
       hasImage: true
@@ -51,7 +44,6 @@ class Login extends Component {
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <AdminNavbar
             {...this.props}
-            brandText="Ravi"
           />
           <Switch>{this.getRoutes(routes)}</Switch>
           <Footer />
