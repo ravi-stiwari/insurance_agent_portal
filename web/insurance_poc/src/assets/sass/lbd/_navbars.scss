@@ -131,7 +131,7 @@
         border-color: $white-color;
     }
     .btn-default.btn-fill{
-        color: $dark-gray;
+        color: $white-color;
         background-color: $white-color;
         @include opacity(.9);
     }
@@ -162,7 +162,7 @@
   
     .navbar-nav{
         > li > a:not(.btn){
-            color: $dark-gray;
+            color: $white-color;
         }
         
         > .active > a, 
@@ -203,7 +203,7 @@
     &:not(.navbar-transparent) .btn-neutral,
     &:not(.navbar-transparent) .btn-neutral:hover,
     &:not(.navbar-transparent) .btn-neutral:active{
-            color: $dark-gray;
+            color: $white-color;
         } 
 }
 
@@ -238,7 +238,7 @@
         height: 22px;
         font-size: $font-size-navbar;
         line-height: $line-height-general;
-        color: $light-gray;
+        color: $white-color;
     }
     .navbar-transparent & .form-control, 
     [class*="navbar-ct"] & .form-control{

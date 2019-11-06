@@ -34,7 +34,7 @@ class Login extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Company",
-                          defaultValue: "Creative Code Inc.",
+                          defaultValue: "Abc Insurance Inc.",
                           disabled: true
                         },
                         {
