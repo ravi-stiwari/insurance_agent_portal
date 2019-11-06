@@ -254,10 +254,9 @@ $topbar-back:          topbar-back !default;
 $bottombar-x:          bottombar-x !default;
 $bottombar-back:       bottombar-back !default;
 
-
-$white-navbar:              rgb(26, 122, 86);
+// $white-navbar:              #2d373e;
+$green-navbar:              rgb(26, 122, 86);
 $blue-navbar:               lighten($new-dark-blue, 10%);
 $azure-navbar:              lighten($new-blue, 15%);
-$green-navbar:              lighten($new-green, 10%);
 $orange-navbar:             lighten($new-orange, 10%);
 $red-navbar:                lighten($new-red, 10%);
