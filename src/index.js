@@ -10,12 +10,12 @@ import "./assets/css/custom.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
 import LoginLayout from "layouts/LoginLayout.jsx";
-import Dashboard from "layouts/Dashboard.jsx"
+import DashboardLayout from "layouts/DashboardLayout.jsx";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path='/dashboard' component={Dashboard} />
+      <Route path='/dashboard' render={props => <DashboardLayout {...props} />}/>
       <Route path="/login" render={props => <LoginLayout {...props} />} />
       <Redirect from="/" to="/login" />
     </Switch>

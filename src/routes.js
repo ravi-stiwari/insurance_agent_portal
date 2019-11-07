@@ -1,34 +1,25 @@
 import LoginView from "views/LoginView.jsx";
-import Dashboard from "views/Dashboard.jsx";
+import DashboardView from "views/DashboardView.jsx";
 import UserProfile from "views/UserProfile.jsx";
-import TableList from "views/TableList.jsx";
 
 const dashboardRoutes = [
   {
     path: "/",
-    name: "Login",
     component: LoginView,
     layout: "/login"
   },
   {
-    path: "/dashboard",
+    path: "/",
     name: "Dashboard",
     icon: "pe-7s-graph",
-    component: Dashboard,
+    component: DashboardView,
     layout: "/dashboard"
   },
   {
-    path: "/user",
+    path: "/",
     name: "User Profile",
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin"
-  },
-  {
-    path: "/table",
-    name: "Table List",
-    icon: "pe-7s-note2",
-    component: TableList,
     layout: "/admin"
   }
 ];

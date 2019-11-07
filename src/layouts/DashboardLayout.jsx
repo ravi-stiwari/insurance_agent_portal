@@ -6,7 +6,7 @@ import Sidebar from "components/Sidebar/Sidebar";
 import routes from "routes.js";
 import image from "assets/img/sidebar-bg.jpg";
 
-class Login extends Component {
+class DashboardLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,14 +17,13 @@ class Login extends Component {
   }
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/dashboard") {
         return (
           <Route
             path={prop.layout + prop.path}
             render={props => (
               <prop.component
                 {...props}
-                handleClick={this.handleNotificationClick}
               />
             )}
             key={key}
@@ -58,4 +57,4 @@ class Login extends Component {
   // }
 }
 
-export default Login;
+export default DashboardLayout;
