@@ -11,10 +11,12 @@ import "./assets/css/pe-icon-7-stroke.css";
 
 import LoginLayout from "layouts/LoginLayout.jsx";
 import DashboardLayout from "layouts/DashboardLayout.jsx";
+import PolicyEditLayout from "layouts/PolicyEditLayout.jsx";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+      <Route path='/editPolicy' render={props => <PolicyEditLayout {...props} />}/>
       <Route path='/dashboard' render={props => <DashboardLayout {...props} />}/>
       <Route path="/login" render={props => <LoginLayout {...props} />} />
       <Redirect from="/" to="/login" />

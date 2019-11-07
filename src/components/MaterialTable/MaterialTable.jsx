@@ -20516,8 +20516,7 @@ class MaterialTable extends PureComponent {
   };
 
   handleRowClicked = row => {
-    
-    console.log(`${row.name} was clicked!`);
+    this.props.handleRowClicked(row);
   }
 
   deleteAll = () => {

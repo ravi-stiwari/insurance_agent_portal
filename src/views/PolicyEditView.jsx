@@ -15,7 +15,7 @@ import Button from "components/CustomButton/CustomButton.jsx";
 
 import avatar from "assets/img/default-avatar.png";
 
-class Login extends Component {
+class PolicyEditView extends Component {
   render() {
     return (
       <div className="content">
@@ -23,7 +23,7 @@ class Login extends Component {
           <Row>
             <Col md={8}>
               <Card
-                title="Login Page"
+                title="Edit Policy"
                 content={
                   <form>
                     <FormInputs
@@ -169,4 +169,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default PolicyEditView;

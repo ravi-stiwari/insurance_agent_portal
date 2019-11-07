@@ -1,5 +1,6 @@
 import LoginView from "views/LoginView.jsx";
 import DashboardView from "views/DashboardView.jsx";
+import PolicyEditView from "views/PolicyEditView.jsx";
 import UserProfile from "views/UserProfile.jsx";
 
 const dashboardRoutes = [
@@ -14,6 +15,13 @@ const dashboardRoutes = [
     icon: "pe-7s-graph",
     component: DashboardView,
     layout: "/dashboard"
+  },
+  {
+    path: "/",
+    name: "Edit Policy",
+    icon: "pe-7s-graph",
+    component: PolicyEditView,
+    layout: "/editPolicy"
   },
   {
     path: "/",
