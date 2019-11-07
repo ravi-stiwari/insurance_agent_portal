@@ -20,7 +20,7 @@ const dashboardRoutes = [
   },
   {
     path: "/",
-    name: "Edit Policy",
+    name: "Add New Policy",
     icon: "pe-7s-edit",
     component: PolicyEditView,
     layout: "/editPolicy"
