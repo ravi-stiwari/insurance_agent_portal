@@ -26,7 +26,7 @@ class LoginView extends Component {
       <div className="content">
         <Grid>
           <Row >
-            <Col xs={6} md={4}>
+            <Col md={4}>
               <LoginCard
                 bgImage="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2013/10/24/101140660-183427329r.530x298.jpg?v=1397148022"
                 avatar={avatar}
