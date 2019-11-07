@@ -7,6 +7,8 @@ const dashboardRoutes = [
   {
     path: "/",
     component: LoginView,
+    name: "Login",
+    icon: "pe-7s-user",
     layout: "/login"
   },
   {
@@ -19,7 +21,7 @@ const dashboardRoutes = [
   {
     path: "/",
     name: "Edit Policy",
-    icon: "pe-7s-graph",
+    icon: "pe-7s-edit",
     component: PolicyEditView,
     layout: "/editPolicy"
   },

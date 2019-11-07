@@ -8,9 +8,8 @@ class DashboardView extends Component {
   }
   
   handleRowClicked(row){
-    const { history: { push } } = this.props;    
-    push('/editPolicy');
-    console.log(row);
+    const { history: { push } } = this.props;
+    push('/editPolicy', row);
   }
   
   render() {

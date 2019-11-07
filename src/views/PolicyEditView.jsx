@@ -10,12 +10,24 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-import { UserCard } from "components/UserCard/UserCard.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
-
-import avatar from "assets/img/default-avatar.png";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 class PolicyEditView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    }
+    this.data = props.location.state
+    if(this.data == undefined) {
+      this.data = {}
+    }
+  }
+  
+  onChange = date => this.setState({ date })
+  
   render() {
     return (
       <div className="content">
@@ -30,135 +42,137 @@ class PolicyEditView extends Component {
                       ncols={["col-md-5", "col-md-3", "col-md-4"]}
                       properties={[
                         {
-                          label: "Company (disabled)",
+                          label: "Policy Id",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Company",
-                          defaultValue: "Abc Insurance Inc.",
-                          disabled: true
+                          placeholder: "Policy Id",  
+                          defaultValue: this.data.Policy_id
                         },
                         {
-                          label: "Username",
+                          label: "Customer Id",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Username",
-                          defaultValue: "michael23"
+                          placeholder: "Customer_id",
+                          defaultValue: this.data.Customer_id
                         },
                         {
-                          label: "Email address",
-                          type: "email",
-                          bsClass: "form-control",
-                          placeholder: "Email"
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-6", "col-md-6"]}
-                      properties={[
-                        {
-                          label: "First name",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "First name",
-                          defaultValue: "Mike"
-                        },
-                        {
-                          label: "Last name",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Last name",
-                          defaultValue: "Andrew"
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-12"]}
-                      properties={[
-                        {
-                          label: "Adress",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Home Adress",
-                          defaultValue:
-                            "Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                        }
-                      ]}
-                    />
-                    <FormInputs
-                      ncols={["col-md-4", "col-md-4", "col-md-4"]}
-                      properties={[
-                        {
-                          label: "City",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "City",
-                          defaultValue: "Mike"
-                        },
-                        {
-                          label: "Country",
-                          type: "text",
-                          bsClass: "form-control",
-                          placeholder: "Country",
-                          defaultValue: "Andrew"
-                        },
-                        {
-                          label: "Postal Code",
+                          label: "Premium",
                           type: "number",
                           bsClass: "form-control",
-                          placeholder: "ZIP Code"
+                          placeholder: "Premium",
+                          defaultValue: this.data.Premium
                         }
                       ]}
                     />
-
-                    <Row>
-                      <Col md={12}>
-                        <FormGroup controlId="formControlsTextarea">
-                          <ControlLabel>About Me</ControlLabel>
-                          <FormControl
-                            rows="5"
-                            componentClass="textarea"
-                            bsClass="form-control"
-                            placeholder="Here can be your description"
-                            defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
+                    <div>
+                      <label>Date of Purchase</label>
+                      <DatePicker
+                        selected={this.state.date}
+                        placeholderText="Click to select a date"
+                        onChange={this.onChange}
+                        todayButton="Today"
+                        withPortal
+                      />
+                      <br>
+                      </br>
+                    </div>
+                    <FormInputs
+                      ncols={["col-md-3", "col-md-3", "col-md-3","col-md-3"]}
+                      properties={[
+                        {
+                          label: "Customer_Income_Group",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "",
+                          defaultValue: this.data.Customer_Income_Group
+                        },
+                        {
+                          label: "Customer_Region",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Customer Region",
+                          defaultValue: this.data.Customer_Region
+                        },
+                        {
+                          label: "Property_Damage_Liability",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Property_Damage_Liability",
+                          defaultValue: this.data.Property_Damage_Liability
+                        },
+                        {
+                          label: "Fuel",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Fuel", 
+                          defaultValue: this.data.Fuel
+                        }
+                      ]}
+                    />
+                    <FormInputs
+                      ncols={["col-md-4","col-md-4","col-md-4"]}
+                      properties={[
+                        {
+                          label: "Customer_Marital_Status",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Customer Marital Status",
+                          defaultValue: this.data.Customer_Marital_status
+                        },
+                        {
+                          label: "Personal_Injury_Protection",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Personal_Injury_Protection",
+                          defaultValue: this.data.Personal_Injury_Protection
+                        },
+                        {
+                          label: "Customer_Gender",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Customer_Gender",
+                          defaultValue: this.data.Customer_Gender
+                        }
+                      ]}
+                    />
+                    <FormInputs
+                      ncols={["col-md-3","col-md-3","col-md-3","col-md-3"]}
+                      properties={[
+                        {
+                          label: "Comprehensive",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Comprehensive",
+                          defaultValue: this.data.Comprehensive
+                        },
+                        {
+                          label: "Collision",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Collision",
+                          defaultValue: this.data.Collision
+                        },
+                        {
+                          label: "Bodily_Injury_Liability",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "Bodily_Injury_Liability",
+                          defaultValue: this.data.Bodily_Injury_Liability
+                        },
+                        {
+                          label: "VEHICLE_SEGMENT",
+                          type: "text",
+                          bsClass: "form-control",
+                          placeholder: "VEHICLE_SEGMENT",
+                          defaultValue: this.data.VEHICLE_SEGMENT
+                        }
+                      ]}
+                    />
                     <Button bsStyle="info" pullRight fill type="submit">
-                      Update Profile
+                      Update Policy
                     </Button>
                     <div className="clearfix" />
                   </form>
-                }
-              />
-            </Col>
-            <Col md={4}>
-              <UserCard
-                bgImage="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
-                avatar={avatar}
-                name="Mike Andrew"
-                userName="michael24"
-                description={
-                  <span>
-                    "Lamborghini Mercy
-                    <br />
-                    Your chick she so thirsty
-                    <br />
-                    I'm in that two seat Lambo"
-                  </span>
-                }
-                socials={
-                  <div>
-                    <Button simple>
-                      <i className="fa fa-facebook-square" />
-                    </Button>
-                    <Button simple>
-                      <i className="fa fa-twitter" />
-                    </Button>
-                    <Button simple>
-                      <i className="fa fa-google-plus-square" />
-                    </Button>
-                  </div>
                 }
               />
             </Col>

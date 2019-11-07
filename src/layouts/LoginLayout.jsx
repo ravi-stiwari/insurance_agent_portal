@@ -12,7 +12,6 @@ class LoginLayout extends Component {
   }
   
   getRoutes = routes => {
-    console.log(routes);
     return routes.map((prop, key) => {
       if (prop.layout === "/login") {
         return (

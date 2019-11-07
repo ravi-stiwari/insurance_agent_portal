@@ -20455,6 +20455,7 @@ const columns = memoize(() => [
     name: 'VEHICLE_SEGMENT',
     selector: 'VEHICLE_SEGMENT',
     sortable: true,
+    grow: 2
   },
   {
     name: 'Premium',
@@ -20465,16 +20466,19 @@ const columns = memoize(() => [
     name: 'Bodily_Injury_Liability',
     selector: 'Bodily_Injury_Liability',
     sortable: true,
+    grow: 2
   },
   {
     name: 'Personal_Injury_Protection',
     selector: 'Personal_Injury_Protection',
     sortable: true,
+    grow: 2
   },
   {
     name: 'Property_Damage_Liability',
     selector: 'Property_Damage_Liability',
     sortable: true,
+    grow: 2
   },
   {
     name: 'Collision',
@@ -20495,6 +20499,7 @@ const columns = memoize(() => [
     name: 'Customer_Income_Group',
     selector: 'Customer_Income_Group',
     sortable: true,
+    grow: 2
   },  
   {
     name: 'Customer_Region',
