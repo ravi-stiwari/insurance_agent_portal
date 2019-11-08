@@ -46,7 +46,24 @@ class PolicyEditView extends Component {
     }
     var tableDataItems = JSON.parse(localStorage.getItem('tableDataItems'));
     if(this.editPolicyTitle == "Add Policy") {
-      
+      var item = {
+          "Policy_id": +event.target.Policy_id.value,
+          "Date_of_Purchase": "1/16/2018",
+          "Customer_id": +event.target.Customer_id.value,
+          "Fuel": event.target.Fuel.value,
+          "VEHICLE_SEGMENT": event.target.VEHICLE_SEGMENT.value,
+          "Premium": +event.target.Premium.value,
+          "Bodily_Injury_Liability": 0,
+          "Personal_Injury_Protection": 0,
+          "Property_Damage_Liability": 0,
+          "Collision": 1,
+          "Comprehensive": 1,
+          "Customer_Gender": "Male",
+          "Customer_Income_Group": "0- $25K",
+          "Customer_Region": "North",
+          "Customer_Marital_status": 0
+      }
+      tableDataItems.push(item);
     }
     else {
       
@@ -86,7 +103,7 @@ class PolicyEditView extends Component {
                         },
                         {
                           label: "Customer Id",
-                          type: "text",
+                          type: "number",
                           bsClass: "form-control",
                           id: "Customer_id",
                           disabled: this.allDisabled,
