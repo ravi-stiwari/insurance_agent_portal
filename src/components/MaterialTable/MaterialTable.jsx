@@ -1,31 +1,6 @@
 import React, { PureComponent } from 'react';
-import { storiesOf } from '@storybook/react';
-import differenceBy from 'lodash/differenceBy';
-import Card from '@material-ui/core/Card';
-import IconButton from '@material-ui/core/IconButton';
-import Checkbox from '@material-ui/core/Checkbox';
-import ArrowDownward from '@material-ui/icons/ArrowDownward';
-import Delete from '@material-ui/icons/Delete';
-import Add from '@material-ui/icons/Add';
-import DataTable, { memoize } from 'react-data-table-component';
-
-const sortIcon = <ArrowDownward />;
-const selectProps = { indeterminate: isIndeterminate => isIndeterminate };
-const actions = (
-  <IconButton
-    color="primary"
-  >
-    <Add />
-  </IconButton>
-);
-const contextActions = memoize(deleteHandler => (
-  <IconButton
-    color="secondary"
-    onClick={deleteHandler}
-  >
-    <Delete />
-  </IconButton>
-));
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import '../../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 const tableDataItems = [
   {
@@ -20429,138 +20404,120 @@ const tableDataItems = [
     "Customer_Marital_status": 0
   }
 ];
+localStorage.setItem('tableDataItems', JSON.stringify(tableDataItems));
 
-const columns = memoize(() => [
+const columns = [
   {
     name: 'Policy_id',
     selector: 'Policy_id',
-    sortable: true,
+    isKey: true
   },
   {
     name: 'Date_of_Purchase',
-    selector: 'Date_of_Purchase',
-    sortable: true,
+    selector: 'Date_of_Purchase'
   },
   {
     name: 'Customer_id',
     selector: 'Customer_id',
-    sortable: true,
+    
   },
   {
     name: 'Fuel',
     selector: 'Fuel',
-    sortable: true,
+    
   },
   {
     name: 'VEHICLE_SEGMENT',
     selector: 'VEHICLE_SEGMENT',
-    sortable: true,
-    grow: 2
+    
+    
   },
   {
     name: 'Premium',
     selector: 'Premium',
-    sortable: true,
+    
   },
   {
     name: 'Bodily_Injury_Liability',
     selector: 'Bodily_Injury_Liability',
-    sortable: true,
-    grow: 2
+    
+    
   },
   {
     name: 'Personal_Injury_Protection',
     selector: 'Personal_Injury_Protection',
-    sortable: true,
-    grow: 2
+    
+    
   },
   {
     name: 'Property_Damage_Liability',
     selector: 'Property_Damage_Liability',
-    sortable: true,
-    grow: 2
+    
+    
   },
   {
     name: 'Collision',
     selector: 'Collision',
-    sortable: true,
+    
   },  
   {
     name: 'Comprehensive',
     selector: 'Comprehensive',
-    sortable: true,
+    
   }, 
   {
     name: 'Customer_Gender',
     selector: 'Customer_Gender',
-    sortable: true,
+    
   },  
   {
     name: 'Customer_Income_Group',
     selector: 'Customer_Income_Group',
-    sortable: true,
-    grow: 2
+    
+    
   },  
   {
     name: 'Customer_Region',
     selector: 'Customer_Region',
-    sortable: true,
+    
   },  
   {
     name: 'Customer_Marital_Status',
-    selector: 'Customer_Marital_Status',
-    sortable: true,
+    selector: 'Customer_Marital_status',
+    
   }
-]);
+];
 
 class MaterialTable extends PureComponent {
-  state = { selectedRows: [], toggleCleared: false, data: tableDataItems };
-
-  handleChange = state => {
-    this.setState({ selectedRows: state.selectedRows });
+  
+  selectRowProp = {
+    mode: 'checkbox',
+    clickToSelect: true,
+    onSelect: this.props.handleRowClicked
   };
-
-  handleRowClicked = row => {
-    this.props.handleRowClicked(row);
-  }
-
-  deleteAll = () => {
-    const { selectedRows } = this.state;
-    const rows = selectedRows.map(r => r.name);
-    
-    if (window.confirm(`Are you sure you want to delete:\r ${rows}?`)) {
-      this.setState(state => ({ toggleCleared: !state.toggleCleared, data: differenceBy(state.data, state.selectedRows, 'name') }));
-    }
-  }
-
+  
   render() {
-    const { data, toggleCleared } = this.state;
-
+    var items = columns.map((item,key) => 
+          <TableHeaderColumn 
+            dataField={item.selector} 
+            isKey={item.isKey} 
+            width={ item.name.length + 180 + ''}
+            dataSort={ true }
+            >{item.name}</TableHeaderColumn>
+    );
     return (
-      <Card style={{ height: '100%' }}>
-        <DataTable
-          title="Policies"
-          columns={columns()}
-          data={data}
-          selectableRows
-          highlightOnHover
-          defaultSortField="name"
-          actions={actions}
-          contextActions={contextActions(this.deleteAll)}
-          sortIcon={sortIcon}
-          selectableRowsComponent={Checkbox}
-          selectableRowsComponentProps={selectProps}
-          onRowSelected={this.handleChange}
-          clearSelectedRows={toggleCleared}
-          onRowClicked={this.handleRowClicked}
-          pagination
-        />
-      </Card>
+        <BootstrapTable
+          ref='table'
+          data={ JSON.parse(localStorage.getItem('tableDataItems')) }
+          pagination={ true }
+          search={ true }
+          exportCSV
+          deleteRow={ true }
+          selectRow={ this.selectRowProp } >
+          {items}
+        </BootstrapTable>
     );
   }
 }
 
-storiesOf('Material UI', module)
-  .add('Override Default Components', () => <MaterialTable />);
-  
 export default MaterialTable;

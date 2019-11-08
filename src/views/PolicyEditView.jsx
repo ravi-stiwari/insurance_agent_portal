@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import {
   Grid,
   Row,
-  Col,
-  FormGroup,
-  ControlLabel,
-  FormControl
+  Col
 } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
@@ -17,16 +14,26 @@ import "react-datepicker/dist/react-datepicker.css";
 class PolicyEditView extends Component {
   constructor(props) {
     super(props);
+    var isdisabled = true;
+    if(props.location.state === undefined) {
+      isdisabled = false;
+    }
     this.state = {
       date: new Date(),
+      isdisabled: isdisabled
     }
     this.data = props.location.state
-    if(this.data == undefined) {
+    if(this.data === undefined) {
       this.data = {}
     }
   }
   
   onChange = date => this.setState({ date })
+  
+  handleSubmit(data){
+    alert("hello")
+    console.log(data);
+  }
   
   render() {
     return (
@@ -72,6 +79,7 @@ class PolicyEditView extends Component {
                         onChange={this.onChange}
                         todayButton="Today"
                         withPortal
+                        disabled={this.state.isdisabled}
                       />
                       <br>
                       </br>
@@ -168,7 +176,7 @@ class PolicyEditView extends Component {
                         }
                       ]}
                     />
-                    <Button bsStyle="info" pullRight fill type="submit">
+                    <Button bsStyle="info" pullRight fill type="submit" onSubmit={this.handleSubmit.bind(this)}>
                       Update Policy
                     </Button>
                     <div className="clearfix" />
