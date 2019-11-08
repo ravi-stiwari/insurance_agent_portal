@@ -4,7 +4,7 @@ import {
   Row,
   Col
 } from "react-bootstrap";
-
+import { withRouter } from 'react-router';
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
@@ -57,6 +57,8 @@ class PolicyEditView extends Component {
       });
     }
     localStorage.setItem('tableDataItems', JSON.stringify(tableDataItems));
+    const { history: { push } } = this.props;    
+    push('/dashboard')
     return true;
   }
   
@@ -69,7 +71,7 @@ class PolicyEditView extends Component {
               <Card
                 title={ this.editPolicyTitle }
                 content={
-                  <form onSubmit={ this.handleSubmit }>
+                  <form onSubmit={ this.handleSubmit.bind(this) }>
                     <FormInputs
                       ncols={["col-md-5", "col-md-3", "col-md-4"]}
                       properties={[
@@ -234,4 +236,4 @@ class PolicyEditView extends Component {
   }
 }
 
-export default PolicyEditView;
+export default withRouter(PolicyEditView);
