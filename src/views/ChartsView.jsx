@@ -127,9 +127,6 @@ class ChartsView extends Component {
     console.log(chartSeries);
     
     chartSeries.sort(function(a, b) {
-      console.log(a);
-      console.log(b);
-      console.log("Upar")
       return a[0] - b [0];
     })
     console.log(chartSeries);
@@ -138,7 +135,7 @@ class ChartsView extends Component {
   
   render() {
     return (
-      <Chart options={this.state.options} series={this.state.series} type="line" height="500" />
+      <Chart options={this.state.options} series={this.state.series} type="area" height="500" />
     );
   }
 }
