@@ -19,7 +19,6 @@ class PolicyEditView extends Component {
       isdisabled = false;
     }
     this.state = {
-      date: new Date(),
       isdisabled: isdisabled
     }
     this.editPolicyTitle = "Edit Policy"
@@ -141,7 +140,7 @@ class PolicyEditView extends Component {
                     <div>
                       <label>Date of Purchase</label>
                       <DatePicker
-                        selected={this.state.date}
+                        selected={new Date(this.data.Date_of_Purchase)}
                         placeholderText="Click to select a date"
                         onChange={this.onChange}
                         todayButton="Today"
