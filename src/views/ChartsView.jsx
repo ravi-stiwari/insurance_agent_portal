@@ -6,8 +6,8 @@ class ChartsView extends Component {
   constructor(props) {
     super(props);
     this.chartSeries = this.prepareSeriesData();
-    this.mindate = "12/01/2017";
-    this.maxdate = "04/01/2019";
+    this.mindate = "01/01/2018";
+    this.maxdate = "01/01/2019";
     this.maxcount = 11;
     this.state = {
         options: {
@@ -118,7 +118,7 @@ class ChartsView extends Component {
   
   render() {
     return (
-      <Chart options={this.state.options} series={this.state.series} type="bar" height="350" />
+      <Chart options={this.state.options} series={this.state.series} type="bar" height="550" />
     );
   }
 }
