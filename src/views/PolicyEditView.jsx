@@ -24,6 +24,7 @@ class PolicyEditView extends Component {
     }
     this.editPolicyTitle = "Edit Policy"
     this.editPolicyTitleBtn = "Update Policy"
+    this.deletePolicyTitleBtn = "Delete Policy"
     this.allDisabled = true;
     if(isdisabled === false) {
       this.allDisabled = false;
@@ -38,12 +39,29 @@ class PolicyEditView extends Component {
   
   onChange = date => this.setState({ date })
   
+  deletePolicy(event){
+    var policyId = event.target.parentNode.elements[0].value;
+    var tableDataItems = JSON.parse(localStorage.getItem('tableDataItems'));
+    var indexToBeDelted = 0;
+    for(var idx = 0; idx<tableDataItems.length; idx++ ){
+      if(tableDataItems[0].Policy_id === +policyId) {
+        indexToBeDelted = idx;
+        break;
+      }
+    }
+    tableDataItems.splice(indexToBeDelted, 1);
+    localStorage.setItem('tableDataItems', JSON.stringify(tableDataItems));
+    const { history: { push } } = this.props;    
+    push('/dashboard')
+  }
+  
   handleSubmit(event){
     event.preventDefault();
     if (event.target.Premium.value > 1000000) {
       alert("Premium cannot be greater than 1 Million");
       return false;
     }
+    debugger;
     var tableDataItems = JSON.parse(localStorage.getItem('tableDataItems'));
     if(this.editPolicyTitle == "Add Policy") {
       var item = {
@@ -238,6 +256,9 @@ class PolicyEditView extends Component {
                         }
                       ]}
                     />
+                    <Button bsStyle="danger" pullRight fill type="button" onClick={this.deletePolicy.bind(this)}>
+                      {this.deletePolicyTitleBtn}
+                    </Button>
                     <Button bsStyle="info" pullRight fill type="submit">
                       {this.editPolicyTitleBtn}
                     </Button>

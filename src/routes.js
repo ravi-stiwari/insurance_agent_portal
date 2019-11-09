@@ -1,5 +1,6 @@
 import LoginView from "views/LoginView.jsx";
 import DashboardView from "views/DashboardView.jsx";
+import ChartsView from "views/ChartsView.jsx";
 import PolicyEditView from "views/PolicyEditView.jsx";
 import UserProfile from "views/UserProfile.jsx";
 
@@ -17,6 +18,13 @@ const dashboardRoutes = [
     icon: "pe-7s-graph",
     component: DashboardView,
     layout: "/dashboard"
+  },
+  {
+    path: "/",
+    name: "Charts",
+    icon: "pe-7s-graph",
+    component: ChartsView,
+    layout: "/charts"
   },
   {
     path: "/",
