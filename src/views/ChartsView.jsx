@@ -6,12 +6,15 @@ class ChartsView extends Component {
   constructor(props) {
     super(props);
     this.chartSeries = this.prepareSeriesData();
-    this.mindate = "01/01/2018";
-    this.maxdate = "01/01/2019";
-    this.maxcount = 11;
     this.state = {
         options: {
           chart: {
+            stacked: false,
+            zoom: {
+              type: 'x',
+              enabled: true,
+              autoScaleYaxis: true
+            },
             shadow: {
               enabled: true,
               color: '#000',
@@ -29,7 +32,7 @@ class ChartsView extends Component {
           //   enabled: true,
           // },
           stroke: {
-            curve: 'stepline'
+            curve: 'smooth'
           },
           title: {
             text: 'Policy Count per region',
@@ -48,8 +51,6 @@ class ChartsView extends Component {
           },
           xaxis: {
             type: 'datetime',
-            min: new Date(this.mindate).getTime(),
-            max: new Date(this.maxdate).getTime(),
             title: {
               text: 'Date of Purchase'
             },
@@ -65,8 +66,11 @@ class ChartsView extends Component {
             title: {
               text: 'Policy Count'
             },
-            min: 0,
-            max: this.maxcount
+            labels: {
+              formatter: function (val) {
+                return (val).toFixed(0);
+              },
+            },
           },
           legend: {
             position: 'top',
@@ -113,12 +117,17 @@ class ChartsView extends Component {
       chartSeries.push(regionData);
     }
     console.log(chartSeries);
+    
+    chartSeries.sort(function(a, b) {
+      return a[0] - b [0];
+    })
+    console.log(chartSeries);
     return chartSeries;
   }
   
   render() {
     return (
-      <Chart options={this.state.options} series={this.state.series} type="bar" height="500" />
+      <Chart options={this.state.options} series={this.state.series} type="line" height="500" />
     );
   }
 }
