@@ -66,14 +66,7 @@ class ChartsView extends Component {
             title: {
               text: 'Policy Count'
             },
-            labels: {
-              formatter: function (val) {
-                if(val === undefined) {
-                  return 0;
-                }
-                return (val).toFixed(0);
-              },
-            },
+            
           },
           legend: {
             position: 'top',
