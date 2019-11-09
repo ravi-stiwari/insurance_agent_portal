@@ -68,6 +68,9 @@ class ChartsView extends Component {
             },
             labels: {
               formatter: function (val) {
+                if(val === undefined) {
+                  return 0;
+                }
                 return (val).toFixed(0);
               },
             },
