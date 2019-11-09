@@ -36,8 +36,11 @@ class ChartsView extends Component {
             curve: 'smooth'
           },
           title: {
-            text: 'Policy Count per region',
-            align: 'left'
+            text: 'Policy bought per Customer Region',
+            align: 'left',
+            style : {
+              fontSize: '40px'
+            }
           },
           grid: {
             borderColor: '#e7e7e7',
@@ -52,7 +55,10 @@ class ChartsView extends Component {
           xaxis: {
             type: 'datetime',
             title: {
-              text: 'Date of Purchase'
+              text: '--- Date of Purchase --->',
+              style : {
+                fontSize: '20px'
+              }
             },
             labels: {
               rotate: -15,
@@ -64,16 +70,19 @@ class ChartsView extends Component {
           },
           yaxis: {
             title: {
-              text: 'Policy Count'
+              text: '--- Policy Count --->',
+              style : {
+                fontSize: '20px'
+              }
             },
             
           },
           legend: {
             position: 'top',
-            horizontalAlign: 'center',
+            horizontalAlign: 'right',
             floating: true,
-            offsetY: -25,
-            offsetX: -5
+            offsetY: -35,
+            fontSize: '16px'  
           }
         },
         series: this.chartSeries,
