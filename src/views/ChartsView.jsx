@@ -15,6 +15,10 @@ class ChartsView extends Component {
               enabled: true,
               autoScaleYaxis: false
             },
+            toolbar: {
+              show: true,
+              autoSelected: 'zoom'
+            },
             shadow: {
               enabled: true,
               color: '#000',
@@ -23,9 +27,6 @@ class ChartsView extends Component {
               blur: 10,
               opacity: 1
             },
-            toolbar: {
-              show: false
-            }
           },
           colors: ['#77B6EA', '#545454', '#FF7878', '#00CED1', '#836FFF'],
           // dataLabels: {
@@ -46,8 +47,7 @@ class ChartsView extends Component {
             },
           },
           markers: {
-            style: 'full',
-            size: 1
+            size: 2
           },
           xaxis: {
             type: 'datetime',
@@ -70,7 +70,7 @@ class ChartsView extends Component {
           },
           legend: {
             position: 'top',
-            horizontalAlign: 'right',
+            horizontalAlign: 'center',
             floating: true,
             offsetY: -25,
             offsetX: -5
