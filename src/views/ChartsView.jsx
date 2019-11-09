@@ -127,7 +127,7 @@ class ChartsView extends Component {
   
   render() {
     return (
-      <Chart options={this.state.options} series={this.state.series} type="line" height="500" />
+      <Chart options={this.state.options} series={this.state.series} type="bar" height="500" />
     );
   }
 }
