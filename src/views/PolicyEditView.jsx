@@ -140,7 +140,7 @@ class PolicyEditView extends Component {
                     <div>
                       <label>Date of Purchase</label>
                       <DatePicker
-                        selected={new Date(this.data.Date_of_Purchase)}
+                        selected={this.data.Date_of_Purchase != undefined ? new Date(this.data.Date_of_Purchase) : new Date()}
                         placeholderText="Click to select a date"
                         onChange={this.onChange}
                         todayButton="Today"

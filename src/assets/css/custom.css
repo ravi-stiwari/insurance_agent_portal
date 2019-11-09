@@ -788,3 +788,7 @@
   font-size: 25px;
   padding: 20px;
 }
+
+html input[disabled] {
+  background-color: #F5F5F5;
+}
