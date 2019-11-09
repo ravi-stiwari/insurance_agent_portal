@@ -51,7 +51,7 @@ class ChartsView extends Component {
             min: new Date(this.mindate).getTime(),
             max: new Date(this.maxdate).getTime(),
             title: {
-              text: 'Month'
+              text: 'Date of Purchase'
             },
             labels: {
               rotate: -15,
