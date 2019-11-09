@@ -13,7 +13,7 @@ class ChartsView extends Component {
             zoom: {
               type: 'x',
               enabled: true,
-              autoScaleYaxis: true
+              autoScaleYaxis: false
             },
             shadow: {
               enabled: true,
