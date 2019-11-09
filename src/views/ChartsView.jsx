@@ -5,6 +5,10 @@ import moment from 'moment';
 class ChartsView extends Component {
   constructor(props) {
     super(props);
+    this.chartSeries = this.prepareSeriesData();
+    this.mindate = "12/01/2017";
+    this.maxdate = "04/01/2019";
+    this.maxcount = 11;
     this.state = {
         options: {
           chart: {
@@ -20,15 +24,15 @@ class ChartsView extends Component {
               show: false
             }
           },
-          colors: ['#77B6EA', '#545454'],
-          dataLabels: {
-            enabled: true,
-          },
+          colors: ['#77B6EA', '#545454', '#FF7878', '#00CED1', '#836FFF'],
+          // dataLabels: {
+          //   enabled: true,
+          // },
           stroke: {
-            curve: 'smooth'
+            curve: 'stepline'
           },
           title: {
-            text: 'Average High & Low Temperature',
+            text: 'Policy Count per region',
             align: 'left'
           },
           grid: {
@@ -39,13 +43,13 @@ class ChartsView extends Component {
             },
           },
           markers: {
-            
-            size: 6
+            style: 'full',
+            size: 1
           },
           xaxis: {
             type: 'datetime',
-            min: new Date("01/01/2013").getTime(),
-            max: new Date("01/20/2019").getTime(),
+            min: new Date(this.mindate).getTime(),
+            max: new Date(this.maxdate).getTime(),
             title: {
               text: 'Month'
             },
@@ -59,10 +63,10 @@ class ChartsView extends Component {
           },
           yaxis: {
             title: {
-              text: 'Temperature'
+              text: 'Policy Count'
             },
-            min: 5,
-            max: 40
+            min: 0,
+            max: this.maxcount
           },
           legend: {
             position: 'top',
@@ -72,22 +76,49 @@ class ChartsView extends Component {
             offsetX: -5
           }
         },
-        series: [
-          {
-            name: "High - 2013",
-            data: [28, 29, 33, 36, 32, 32, 33]
-          },
-          {
-            name: "Low - 2013",
-            data: [12, 11, 14, 18, 17, 13, 13]
-          }
-        ],
+        series: this.chartSeries,
       }
+  }
+  
+  prepareSeriesData(){
+    var tableDataItems = JSON.parse(localStorage.getItem('tableDataItems'));
+    var dataSeries = {};
+    tableDataItems.forEach(item => {
+      if(item.Customer_Region in dataSeries){
+        if(item.Date_of_Purchase in dataSeries[item.Customer_Region]){
+          dataSeries[item.Customer_Region][item.Date_of_Purchase] = dataSeries[item.Customer_Region][item.Date_of_Purchase] + 1
+        }
+        else
+        {
+          dataSeries[item.Customer_Region][item.Date_of_Purchase] = 1;
+        }
+      }
+      else {
+        dataSeries[item.Customer_Region] = {};
+        dataSeries[item.Customer_Region][item.Date_of_Purchase] = 1
+      }
+    });
+    console.log(dataSeries)
+    var chartSeries = [];
+    for( var region in dataSeries) {
+      let regionData = { 'name': region };
+      let data = []
+      for (var date in dataSeries[region]) {
+        let innerArr = []
+        innerArr.push(new Date(date).getTime());
+        innerArr.push(dataSeries[region][date]);
+        data.push(innerArr)
+      }
+      regionData['data'] = data;
+      chartSeries.push(regionData);
+    }
+    console.log(chartSeries);
+    return chartSeries;
   }
   
   render() {
     return (
-      <Chart options={this.state.options} series={this.state.series} type="line" height="350" />
+      <Chart options={this.state.options} series={this.state.series} type="bar" height="350" />
     );
   }
 }
